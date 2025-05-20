@@ -4,7 +4,7 @@ class HouseSerializer(BaseSerializer):
     def serialize_instance(self, instance) -> dict:
         return {
             'id': instance.pk,
-            'image': instance.image.url if instance.image else None,
+            'image': self.build_url(instance.image.url) if instance.image else None,
             'price': float(instance.price),
             'rooms': {
                 'bedrooms': instance.bedrooms,
