@@ -121,7 +121,8 @@ def house_update(request, house_id):
         if not all(field_values):
             return JsonResponse({"error": "Missing required fields."}, status=400)
 
-        house.image = image 
+        if image:
+            house.image = image
         house.price = price
         house.bedrooms = bedrooms
         house.bathrooms = bathrooms
