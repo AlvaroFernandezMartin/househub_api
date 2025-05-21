@@ -1,0 +1,339 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "user1",
+      "password": "pbkdf2_sha256$260000$example$hashedpassword1",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "user2",
+      "password": "pbkdf2_sha256$260000$example$hashedpassword2",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 510000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "size": 110,
+      "description": "Example house 1 description.",
+      "street": "Street 1",
+      "house_number": 1,
+      "house_number_addition": "B",
+      "city": "City 1",
+      "zip_code": "10001",
+      "construction_year": 1991,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "image": "house_default.jpg",
+      "price": 520000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "size": 120,
+      "description": "Example house 2 description.",
+      "street": "Street 2",
+      "house_number": 2,
+      "house_number_addition": "C",
+      "city": "City 2",
+      "zip_code": "10002",
+      "construction_year": 1992,
+      "has_garage": true,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 530000,
+      "bedrooms": 4,
+      "bathrooms": 1,
+      "size": 130,
+      "description": "Example house 3 description.",
+      "street": "Street 3",
+      "house_number": 3,
+      "house_number_addition": null,
+      "city": "City 3",
+      "zip_code": "10003",
+      "construction_year": 1993,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "image": "house_default.jpg",
+      "price": 540000,
+      "bedrooms": 5,
+      "bathrooms": 2,
+      "size": 140,
+      "description": "Example house 4 description.",
+      "street": "Street 4",
+      "house_number": 4,
+      "house_number_addition": "B",
+      "city": "City 4",
+      "zip_code": "10004",
+      "construction_year": 1994,
+      "has_garage": true,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 550000,
+      "bedrooms": 1,
+      "bathrooms": 3,
+      "size": 150,
+      "description": "Example house 5 description.",
+      "street": "Street 5",
+      "house_number": 5,
+      "house_number_addition": "C",
+      "city": "City 5",
+      "zip_code": "10005",
+      "construction_year": 1995,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 6,
+    "fields": {
+      "user": 1,
+      "image": "house_default.jpg",
+      "price": 560000,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "size": 160,
+      "description": "Example house 6 description.",
+      "street": "Street 6",
+      "house_number": 6,
+      "house_number_addition": null,
+      "city": "City 6",
+      "zip_code": "10006",
+      "construction_year": 1996,
+      "has_garage": true,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 7,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 570000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "size": 170,
+      "description": "Example house 7 description.",
+      "street": "Street 7",
+      "house_number": 7,
+      "house_number_addition": "B",
+      "city": "City 7",
+      "zip_code": "10007",
+      "construction_year": 1997,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "image": "house_default.jpg",
+      "price": 580000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "size": 180,
+      "description": "Example house 8 description.",
+      "street": "Street 8",
+      "house_number": 8,
+      "house_number_addition": "C",
+      "city": "City 8",
+      "zip_code": "10008",
+      "construction_year": 1998,
+      "has_garage": true,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 9,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 590000,
+      "bedrooms": 5,
+      "bathrooms": 1,
+      "size": 190,
+      "description": "Example house 9 description.",
+      "street": "Street 9",
+      "house_number": 9,
+      "house_number_addition": null,
+      "city": "City 9",
+      "zip_code": "10009",
+      "construction_year": 1999,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "image": "house_default.jpg",
+      "price": 600000,
+      "bedrooms": 1,
+      "bathrooms": 2,
+      "size": 200,
+      "description": "Example house 10 description.",
+      "street": "Street 10",
+      "house_number": 10,
+      "house_number_addition": "B",
+      "city": "City 10",
+      "zip_code": "10010",
+      "construction_year": 2000,
+      "has_garage": true,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 11,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 610000,
+      "bedrooms": 2,
+      "bathrooms": 3,
+      "size": 210,
+      "description": "Example house 11 description.",
+      "street": "Street 11",
+      "house_number": 11,
+      "house_number_addition": "C",
+      "city": "City 11",
+      "zip_code": "10011",
+      "construction_year": 2001,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 12,
+    "fields": {
+      "user": 1,
+      "image": "house_default.jpg",
+      "price": 620000,
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "size": 220,
+      "description": "Example house 12 description.",
+      "street": "Street 12",
+      "house_number": 12,
+      "house_number_addition": null,
+      "city": "City 12",
+      "zip_code": "10012",
+      "construction_year": 2002,
+      "has_garage": true,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 13,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 630000,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "size": 230,
+      "description": "Example house 13 description.",
+      "street": "Street 13",
+      "house_number": 13,
+      "house_number_addition": "B",
+      "city": "City 13",
+      "zip_code": "10013",
+      "construction_year": 2003,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 14,
+    "fields": {
+      "user": 1,
+      "image": "house_default.jpg",
+      "price": 640000,
+      "bedrooms": 5,
+      "bathrooms": 3,
+      "size": 240,
+      "description": "Example house 14 description.",
+      "street": "Street 14",
+      "house_number": 14,
+      "house_number_addition": "C",
+      "city": "City 14",
+      "zip_code": "10014",
+      "construction_year": 2004,
+      "has_garage": true,
+      "created_at": "2025-05-21"
+    }
+  },
+  {
+    "model": "houses.house",
+    "pk": 15,
+    "fields": {
+      "user": 2,
+      "image": "house_default.jpg",
+      "price": 650000,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "size": 250,
+      "description": "Example house 15 description.",
+      "street": "Street 15",
+      "house_number": 15,
+      "house_number_addition": null,
+      "city": "City 15",
+      "zip_code": "10015",
+      "construction_year": 2005,
+      "has_garage": false,
+      "created_at": "2025-05-21"
+    }
+  }
+]

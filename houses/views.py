@@ -1,11 +1,9 @@
+from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_http_methods
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse, HttpResponseNotFound
-from django.core.exceptions import ValidationError
 from .models import House
 from .serializers import HouseSerializer
-import json
-
+from users.decorators import auth_required
 
 @csrf_exempt
 @require_GET
@@ -35,6 +33,7 @@ def houses_detail(request, house_id):
 
 @csrf_exempt
 @require_http_methods(["DELETE"])
+@auth_required
 def houses_delete(request, house_id):
     try:
         house = House.objects.get(id=house_id)
@@ -48,6 +47,7 @@ def houses_delete(request, house_id):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@auth_required
 def houses_create(request):
     try:
         image = request.FILES.get("image")
@@ -94,6 +94,7 @@ def houses_create(request):
 
 @csrf_exempt
 @require_http_methods(["POST"])
+@auth_required
 def house_update(request, house_id):
     try:
         house = House.objects.get(id=house_id)
@@ -146,19 +147,19 @@ def house_update(request, house_id):
 
 
 
-@csrf_exempt
-@require_http_methods(["POST"])
-def upload_image(request, house_id):
-    try:
-        house = House.objects.get(id=house_id)
-    except House.DoesNotExist:
-        return JsonResponse({"error": "House not found."}, status=404)
+# @csrf_exempt
+# @require_http_methods(["POST"])
+# def upload_image(request, house_id):
+#     try:
+#         house = House.objects.get(id=house_id)
+#     except House.DoesNotExist:
+#         return JsonResponse({"error": "House not found."}, status=404)
 
-    image = request.FILES.get("image")
-    if not image:
-        return JsonResponse({"error": "No image file provided."}, status=400)
+#     image = request.FILES.get("image")
+#     if not image:
+#         return JsonResponse({"error": "No image file provided."}, status=400)
 
-    house.image = image
-    house.save()
+#     house.image = image
+#     house.save()
 
-    return JsonResponse({"message": "Image uploaded successfully."})
+#     return JsonResponse({"message": "Image uploaded successfully."})
