@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-amq4^6-exm5#n7jb41yfhi1!ou!^k@y#5_q+su$ks2mc(=(3p2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'househubapi-production.up.railway.app']
+
 
 
 # Application definition
