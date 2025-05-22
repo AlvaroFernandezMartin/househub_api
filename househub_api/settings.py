@@ -75,6 +75,11 @@ CORS_ALLOWED_ORIGINS = [
     'https://househubapi-production.up.railway.app/' ,
 ]
 
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.railway\.app$",
+    r"^http://127\.0\.0\.1:8080$",
+]
+
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'content-type',
