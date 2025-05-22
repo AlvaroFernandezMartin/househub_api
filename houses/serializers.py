@@ -5,7 +5,7 @@ class HouseSerializer(BaseSerializer):
         return {
             'id': instance.pk,
             'user': instance.user.username,
-            'image': self.build_url(instance.image.url) if instance.image else None,
+            'image': instance.image,
             'price': float(instance.price),
             'rooms': {
                 'bedrooms': instance.bedrooms,

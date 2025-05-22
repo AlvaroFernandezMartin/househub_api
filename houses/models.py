@@ -3,7 +3,8 @@ from django.conf import settings
 
 class House(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) 
-    image = models.ImageField()
+    image = models.URLField(null=True, blank=True)
+    image_public_id = models.CharField(max_length=255, null=True, blank=True)  
     price = models.DecimalField(max_digits=12, decimal_places=2)
     bedrooms = models.PositiveIntegerField()
     bathrooms = models.PositiveIntegerField()

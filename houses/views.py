@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import House
 from .serializers import HouseSerializer
 from users.decorators import auth_required
+import cloudinary.uploader
 
 @csrf_exempt
 @require_GET
@@ -38,15 +39,17 @@ def houses_delete(request, house_id):
     try:
         house = House.objects.get(id=house_id)
 
-        if not request.user.is_superuser and house.user != request.user:
-            return JsonResponse({"error": "Permission denied."}, status=403)
+        if house.image_public_id:
+            cloudinary.uploader.destroy(house.image_public_id)
 
         house.delete()
         return JsonResponse({"message": "House deleted successfully."}, status=200)
+
     except House.DoesNotExist:
         return JsonResponse({"error": "House not found."}, status=404)
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+
 
 
 @csrf_exempt
@@ -54,7 +57,16 @@ def houses_delete(request, house_id):
 @auth_required
 def houses_create(request):
     try:
-        image = request.FILES.get("image")
+        uploaded_image = request.FILES.get("image")
+        image_url = None
+        if uploaded_image:
+            import cloudinary.uploader
+            upload_result = cloudinary.uploader.upload(uploaded_image)
+            image_url = upload_result.get("secure_url")
+            image_public_id = upload_result.get("public_id")
+
+
+        # Recogida de datos
         price = request.POST.get("price")
         bedrooms = request.POST.get("bedrooms")
         bathrooms = request.POST.get("bathrooms")
@@ -75,8 +87,9 @@ def houses_create(request):
             return JsonResponse({"error": "Missing required fields."}, status=400)
 
         house = House.objects.create(
-            user=request.user, 
-            image=image,
+            user=request.user,
+            image=image_url,
+            image_public_id=image_public_id,
             price=price,
             bedrooms=bedrooms,
             bathrooms=bathrooms,
@@ -91,12 +104,12 @@ def houses_create(request):
             has_garage=has_garage.lower() == "true",
         )
 
-
         serializer = HouseSerializer(house, request=request)
         return serializer.json_response()
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -105,6 +118,7 @@ def house_update(request, house_id):
     try:
         house = House.objects.get(id=house_id)
 
+        # Solo el propietario o superusuario puede editar
         if not request.user.is_superuser and house.user != request.user:
             return JsonResponse({"error": "Permission denied."}, status=403)
 
@@ -112,7 +126,12 @@ def house_update(request, house_id):
         return JsonResponse({"error": "House not found."}, status=404)
 
     try:
-        image = request.FILES.get("image")
+        uploaded_image = request.FILES.get("image")
+        if uploaded_image:
+            import cloudinary.uploader
+            upload_result = cloudinary.uploader.upload(uploaded_image)
+            house.image = upload_result.get("secure_url")
+
         price = request.POST.get("price")
         bedrooms = request.POST.get("bedrooms")
         bathrooms = request.POST.get("bathrooms")
@@ -126,13 +145,11 @@ def house_update(request, house_id):
         construction_year = request.POST.get("constructionYear")
         has_garage = request.POST.get("hasGarage")
 
-        field_values = [price, bedrooms, bathrooms, size, description,
-                        street, house_number, city, zip_code, construction_year, has_garage]
-        if not all(field_values):
+        required_fields = [price, bedrooms, bathrooms, size, description,
+                           street, house_number, city, zip_code, construction_year, has_garage]
+        if any(f in [None, ""] for f in required_fields):
             return JsonResponse({"error": "Missing required fields."}, status=400)
 
-        if image:
-            house.image = image
         house.price = price
         house.bedrooms = bedrooms
         house.bathrooms = bathrooms
@@ -140,7 +157,7 @@ def house_update(request, house_id):
         house.description = description
         house.street = street
         house.house_number = house_number
-        house.house_number_addition = house_number_addition if house_number_addition is not None else house.house_number_addition
+        house.house_number_addition = house_number_addition or house.house_number_addition
         house.city = city
         house.zip_code = zip_code
         house.construction_year = construction_year
@@ -153,6 +170,7 @@ def house_update(request, house_id):
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+
 
 
 # @csrf_exempt

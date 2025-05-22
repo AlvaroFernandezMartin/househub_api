@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from corsheaders.defaults import default_headers
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,10 +40,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'cloudinary',
+    'cloudinary_storage',
     'users.apps.UsersConfig',
     'houses.apps.HousesConfig', 
     'shared.apps.SharedConfig'
 ]
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+cloudinary.config(
+    cloud_name='dxinpqg5y',
+    api_key='284688185574276',
+    api_secret='0xisMtgoNdKqtiSxu9GzqRA5dtc',
+    secure=True
+)
 
 
 MIDDLEWARE = [
