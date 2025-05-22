@@ -7,9 +7,9 @@ import cloudinary
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY
-SECRET_KEY = 'django-insecure-amq4^6-exm5#n7jb41yfhi1!ou!^k@y#5_q+su$ks2mc(=(3p2'
-DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'househubapi-production.up.railway.app']
+SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-secret-key")
+DEBUG = os.getenv("DEBUG", "False") == "True"
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 # APPLICATIONS
 INSTALLED_APPS = [
@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 # MIDDLEWARE
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # 🔥 Para servir archivos estáticos
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -71,7 +71,7 @@ TEMPLATES = [
 ROOT_URLCONF = 'househub_api.urls'
 WSGI_APPLICATION = 'househub_api.wsgi.application'
 
-# DATABASE (usando SQLite local, cambiar a PostgreSQL si usas Railway DB)
+# DATABASE (SQLite)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -95,10 +95,7 @@ USE_TZ = True
 
 # CORS CONFIGURATION
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8080",
-    "https://househubapi-production.up.railway.app"
-]
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://127.0.0.1:8080").split(",")
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.railway\.app$",
     r"^http://127\.0\.0\.1:8080$",
@@ -106,18 +103,16 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 CORS_ALLOW_HEADERS = list(default_headers) + ['content-type']
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 
-# CLOUDINARY CONFIG
+# CLOUDINARY
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
 cloudinary.config(
-    cloud_name='dxinpqg5y',
-    api_key='284688185574276',
-    api_secret='0xisMtgoNdKqtiSxu9GzqRA5dtc',
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
     secure=True
 )
 
-# USE HTTPS HEADERS WHEN DEPLOYED IN PROXIED ENVIRONMENTS LIKE RAILWAY
+# HTTPS (cuando Railway actúe como proxy)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# DEFAULT PRIMARY KEY
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

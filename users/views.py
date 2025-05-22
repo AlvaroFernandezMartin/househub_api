@@ -22,7 +22,6 @@ def login_view(request):
         if not user:
             return JsonResponse({"error": "Invalid credentials"}, status=401)
 
-        # Si ya tiene token, borramos si expiró
         if hasattr(user, 'token'):
             if user.token.is_expired():
                 user.token.delete()
@@ -36,9 +35,9 @@ def login_view(request):
             key="auth_token",
             value=str(token.key),
             httponly=True,
-            max_age=24 * 60 * 60,  # 24 horas en segundos
+            max_age=24 * 60 * 60,  
             samesite='Lax',
-            secure=False  # Cambia a True en producción con HTTPS
+            secure=False  
         )
         return response
 

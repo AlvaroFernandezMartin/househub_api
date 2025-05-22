@@ -66,7 +66,6 @@ def houses_create(request):
             image_public_id = upload_result.get("public_id")
 
 
-        # Recogida de datos
         price = request.POST.get("price")
         bedrooms = request.POST.get("bedrooms")
         bathrooms = request.POST.get("bathrooms")
@@ -118,7 +117,6 @@ def house_update(request, house_id):
     try:
         house = House.objects.get(id=house_id)
 
-        # Solo el propietario o superusuario puede editar
         if not request.user.is_superuser and house.user != request.user:
             return JsonResponse({"error": "Permission denied."}, status=403)
 
@@ -173,19 +171,3 @@ def house_update(request, house_id):
 
 
 
-# @csrf_exempt
-# @require_http_methods(["POST"])
-# def upload_image(request, house_id):
-#     try:
-#         house = House.objects.get(id=house_id)
-#     except House.DoesNotExist:
-#         return JsonResponse({"error": "House not found."}, status=404)
-
-#     image = request.FILES.get("image")
-#     if not image:
-#         return JsonResponse({"error": "No image file provided."}, status=400)
-
-#     house.image = image
-#     house.save()
-
-#     return JsonResponse({"message": "Image uploaded successfully."})
