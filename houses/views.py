@@ -37,6 +37,10 @@ def houses_detail(request, house_id):
 def houses_delete(request, house_id):
     try:
         house = House.objects.get(id=house_id)
+
+        if not request.user.is_superuser and house.user != request.user:
+            return JsonResponse({"error": "Permission denied."}, status=403)
+
         house.delete()
         return JsonResponse({"message": "House deleted successfully."}, status=200)
     except House.DoesNotExist:
@@ -71,6 +75,7 @@ def houses_create(request):
             return JsonResponse({"error": "Missing required fields."}, status=400)
 
         house = House.objects.create(
+            user=request.user, 
             image=image,
             price=price,
             bedrooms=bedrooms,
@@ -86,6 +91,7 @@ def houses_create(request):
             has_garage=has_garage.lower() == "true",
         )
 
+
         serializer = HouseSerializer(house, request=request)
         return serializer.json_response()
 
@@ -98,6 +104,10 @@ def houses_create(request):
 def house_update(request, house_id):
     try:
         house = House.objects.get(id=house_id)
+
+        if not request.user.is_superuser and house.user != request.user:
+            return JsonResponse({"error": "Permission denied."}, status=403)
+
     except House.DoesNotExist:
         return JsonResponse({"error": "House not found."}, status=404)
 
@@ -115,7 +125,6 @@ def house_update(request, house_id):
         zip_code = request.POST.get("zip")
         construction_year = request.POST.get("constructionYear")
         has_garage = request.POST.get("hasGarage")
-
 
         field_values = [price, bedrooms, bathrooms, size, description,
                         street, house_number, city, zip_code, construction_year, has_garage]
@@ -144,7 +153,6 @@ def house_update(request, house_id):
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
-
 
 
 # @csrf_exempt

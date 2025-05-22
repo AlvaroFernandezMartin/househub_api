@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from users.decorators import auth_required
 from .models import Token
 import json
+from django.contrib.auth.models import User
 
 
 @csrf_exempt
@@ -58,7 +59,27 @@ def logout_view(request):
 def current_user(request):
     user = request.user
     return JsonResponse({
-        'id': user.id,
-        'username': user.username,
-        'email': user.email,
+        "id": request.user.id,
+        "username": request.user.username,
+        "is_superuser": request.user.is_superuser, 
     })
+
+    
+    
+@csrf_exempt
+def signup_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        username = data.get("username")
+        password = data.get("password")
+
+        if not username or not password:
+            return JsonResponse({"error": "Username and password required"}, status=400)
+
+        if User.objects.filter(username=username).exists():
+            return JsonResponse({"error": "Username already exists"}, status=400)
+
+        user = User.objects.create_user(username=username, password=password)
+        return JsonResponse({"message": "User created successfully"}, status=201)
+
+    return JsonResponse({"error": "Invalid request"}, status=405)
