@@ -18,4 +18,4 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Usa Gunicorn en lugar de runserver
-CMD ["gunicorn", "househub_api.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "househub_api.wsgi:application", "--bind", "0.0.0.0:8080"]
