@@ -15,7 +15,7 @@ RUN pip install --upgrade pip \
 RUN python manage.py collectstatic --noinput
 
 # Expone el puerto que usará Gunicorn
-EXPOSE 8000
+EXPOSE 8080
 
 # Usa Gunicorn en lugar de runserver
 CMD ["gunicorn", "househub_api.wsgi:application", "--bind", "0.0.0.0:8080"]
