@@ -1,0 +1,312 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "user1",
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "username": "user2",
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "username": "user3",
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house4_cuydn0.jpg",
+            "price": 762,
+            "size": 62,
+            "description": "Luminoso y espacioso hogar ideal para familias.",
+            "rooms": {
+                "bedrooms": 4,
+                "bathrooms": 2
+            },
+            "location": {
+                "street": "Calle Mayor",
+                "houseNumber": 90,
+                "houseNumberAddition": "",
+                "city": "Madrid",
+                "zip": "31655"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2019,
+            "hasGarage": true,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218680/house8_cewe9l.jpg",
+            "price": 1274,
+            "size": 127,
+            "description": "Vivienda con excelente conexión al transporte público.",
+            "rooms": {
+                "bedrooms": 2,
+                "bathrooms": 1
+            },
+            "location": {
+                "street": "Avenida del Sol",
+                "houseNumber": 57,
+                "houseNumberAddition": "",
+                "city": "Valencia",
+                "zip": "33626"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2015,
+            "hasGarage": false,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 3,
+        "fields": {
+            "user": 1,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218680/house8_cewe9l.jpg",
+            "price": 833,
+            "size": 74,
+            "description": "Luminoso y espacioso hogar ideal para familias.",
+            "rooms": {
+                "bedrooms": 1,
+                "bathrooms": 1
+            },
+            "location": {
+                "street": "Ronda Sur",
+                "houseNumber": 106,
+                "houseNumberAddition": "",
+                "city": "Barcelona",
+                "zip": "52683"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2011,
+            "hasGarage": false,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 4,
+        "fields": {
+            "user": 2,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house10_srnqtz.jpg",
+            "price": 1219,
+            "size": 135,
+            "description": "Chalet con jardín y piscina privada.",
+            "rooms": {
+                "bedrooms": 4,
+                "bathrooms": 2
+            },
+            "location": {
+                "street": "Camino Viejo",
+                "houseNumber": 92,
+                "houseNumberAddition": "",
+                "city": "Bilbao",
+                "zip": "14145"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 1995,
+            "hasGarage": false,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 5,
+        "fields": {
+            "user": 3,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house9_xvhoce.jpg",
+            "price": 1193,
+            "size": 93,
+            "description": "Chalet con jardín y piscina privada.",
+            "rooms": {
+                "bedrooms": 3,
+                "bathrooms": 1
+            },
+            "location": {
+                "street": "Ronda Sur",
+                "houseNumber": 32,
+                "houseNumberAddition": "",
+                "city": "Sevilla",
+                "zip": "43279"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2005,
+            "hasGarage": false,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 6,
+        "fields": {
+            "user": 1,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house2_bmldch.jpg",
+            "price": 831,
+            "size": 69,
+            "description": "Apartamento moderno en el centro de la ciudad.",
+            "rooms": {
+                "bedrooms": 4,
+                "bathrooms": 1
+            },
+            "location": {
+                "street": "Ronda Sur",
+                "houseNumber": 74,
+                "houseNumberAddition": "",
+                "city": "Barcelona",
+                "zip": "51197"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 1997,
+            "hasGarage": true,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 7,
+        "fields": {
+            "user": 2,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house2_bmldch.jpg",
+            "price": 943,
+            "size": 124,
+            "description": "Vivienda con excelente conexión al transporte público.",
+            "rooms": {
+                "bedrooms": 1,
+                "bathrooms": 1
+            },
+            "location": {
+                "street": "Calle Mayor",
+                "houseNumber": 110,
+                "houseNumberAddition": "",
+                "city": "Barcelona",
+                "zip": "15515"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2001,
+            "hasGarage": true,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 8,
+        "fields": {
+            "user": 3,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house3_bsdylz.jpg",
+            "price": 530,
+            "size": 129,
+            "description": "Luminoso y espacioso hogar ideal para familias.",
+            "rooms": {
+                "bedrooms": 3,
+                "bathrooms": 1
+            },
+            "location": {
+                "street": "Ronda Sur",
+                "houseNumber": 90,
+                "houseNumberAddition": "",
+                "city": "Sevilla",
+                "zip": "51023"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2020,
+            "hasGarage": false,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 9,
+        "fields": {
+            "user": 1,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house7_hmm66l.jpg",
+            "price": 985,
+            "size": 49,
+            "description": "Luminoso y espacioso hogar ideal para familias.",
+            "rooms": {
+                "bedrooms": 3,
+                "bathrooms": 1
+            },
+            "location": {
+                "street": "Camino Viejo",
+                "houseNumber": 101,
+                "houseNumberAddition": "",
+                "city": "Valencia",
+                "zip": "17305"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2010,
+            "hasGarage": true,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 10,
+        "fields": {
+            "user": 2,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1748218679/house6_wxpet7.jpg",
+            "price": 509,
+            "size": 80,
+            "description": "Piso reformado a estrenar en zona tranquila.",
+            "rooms": {
+                "bedrooms": 2,
+                "bathrooms": 2
+            },
+            "location": {
+                "street": "Avenida del Sol",
+                "houseNumber": 3,
+                "houseNumberAddition": "",
+                "city": "Barcelona",
+                "zip": "21806"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2000,
+            "hasGarage": false,
+            "madeByMe": false
+        }
+    },
+    {
+        "model": "houses.house",
+        "pk": 11,
+        "fields": {
+            "user": 3,
+            "image": "https://res.cloudinary.com/dxinpqg5y/image/upload/v1747942731/x2tlxfyw4kcqyjohnrwv.png",
+            "price": 846,
+            "size": 49,
+            "description": "Vivienda con excelente conexión al transporte público.",
+            "rooms": {
+                "bedrooms": 2,
+                "bathrooms": 2
+            },
+            "location": {
+                "street": "Avenida del Sol",
+                "houseNumber": 3,
+                "houseNumberAddition": "",
+                "city": "Sevilla",
+                "zip": "45615"
+            },
+            "createdAt": "2025-05-26",
+            "constructionYear": 2008,
+            "hasGarage": true,
+            "madeByMe": false
+        }
+    }
+]
